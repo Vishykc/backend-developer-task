@@ -1,6 +1,7 @@
 package com.github.backenddevelopertask.controller;
 
 import com.github.backenddevelopertask.model.Customer;
+import com.github.backenddevelopertask.repo.ComputerRepo;
 import com.github.backenddevelopertask.repo.CustomerRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -16,6 +17,9 @@ public class CustomerController {
 
     @Autowired
     private CustomerRepo customerRepo;
+
+    @Autowired
+    private ComputerRepo computerRepo;
 
     @GetMapping("/getAllCustomers")
     public ResponseEntity<List<Customer>> getAllCustomers() {
@@ -64,6 +68,9 @@ public class CustomerController {
             Customer updatedCustomerData = oldCustomerData.get();
             updatedCustomerData.setFirstName(newCustomerData.getFirstName());
             updatedCustomerData.setLastName(newCustomerData.getLastName());
+            updatedCustomerData.setEmail(newCustomerData.getEmail());
+            updatedCustomerData.setAddress(newCustomerData.getAddress());
+            updatedCustomerData.setComputers(newCustomerData.getComputers());
 
             Customer customerObj = customerRepo.save(updatedCustomerData);
             return new ResponseEntity<>(customerObj, HttpStatus.OK);
