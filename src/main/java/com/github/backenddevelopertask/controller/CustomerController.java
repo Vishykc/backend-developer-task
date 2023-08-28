@@ -1,5 +1,6 @@
 package com.github.backenddevelopertask.controller;
 
+import com.github.backenddevelopertask.model.Computer;
 import com.github.backenddevelopertask.model.Customer;
 import com.github.backenddevelopertask.repo.ComputerRepo;
 import com.github.backenddevelopertask.repo.CustomerRepo;
@@ -100,6 +101,19 @@ public class CustomerController {
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
+    @GetMapping("/getComputersByCustomerId/{id}")
+    public ResponseEntity<List<Computer>> getComputersByCustomerId(@PathVariable Long id) {
+        Optional<Customer> customerData = customerRepo.findById(id);
+
+        if (customerData.isPresent()) {
+            List<Computer> computerList = new ArrayList<>(customerData.get().getComputers());
+            return new ResponseEntity<>(computerList, HttpStatus.OK);
+        }
+        else {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
+
     @PostMapping("/addCustomer")
     public ResponseEntity<Customer> addCustomer(@RequestBody Customer customer) {
         Customer customerObj = customerRepo.save(customer);
@@ -127,6 +141,4 @@ public class CustomerController {
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 
     }
-
-
 }
