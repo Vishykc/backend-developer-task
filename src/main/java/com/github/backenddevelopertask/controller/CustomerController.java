@@ -41,6 +41,54 @@ public class CustomerController {
 
     }
 
+    @GetMapping("/getAllCustomersByFirstName/{firstName}")
+    public ResponseEntity<List<Customer>> getAllCustomersByFirstName(@PathVariable String firstName) {
+
+        try {
+            List<Customer> customerList = new ArrayList<>();
+            customerRepo.findAll().forEach(customer -> {
+                        if (customer.getFirstName().equals(firstName)) {
+                            customerList.add(customer);
+                        }
+                    }
+            );
+
+            if (customerList.isEmpty()) {
+                return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+            }
+
+            return new ResponseEntity<>(customerList, HttpStatus.OK);
+
+        } catch (Exception ex) {
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+
+        }
+    }
+        @GetMapping("/getAllCustomersByLastName/{lastName}")
+        public ResponseEntity<List<Customer>> getAllCustomersByLastName(@PathVariable String lastName) {
+
+            try {
+                List<Customer> customerList = new ArrayList<>();
+                customerRepo.findAll().forEach(customer -> {
+                            if (customer.getLastName().equals(lastName)) {
+                                customerList.add(customer);
+                            }
+                        }
+                );
+
+                if(customerList.isEmpty()) {
+                    return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+                }
+
+                return new ResponseEntity<>(customerList, HttpStatus.OK);
+
+            } catch(Exception ex) {
+                return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+
+            }
+
+    }
+
     @GetMapping("/getCustomerById/{id}")
     public ResponseEntity<Customer> getCustomerById(@PathVariable Long id) {
         Optional<Customer> customerData = customerRepo.findById(id);
