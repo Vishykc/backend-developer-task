@@ -1,0 +1,282 @@
+{
+	"info": {
+		"_postman_id": "6ef2ec31-ab0f-4d11-a2a6-dc71c3966bec",
+		"name": "backend_developer_task",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "28836500"
+	},
+	"item": [
+		{
+			"name": "getAllCustomers",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"firstName\" : \"Ivan\",\r\n    \"lastName\" : \"Horvat\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9090/getAllCustomers",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9090",
+					"path": [
+						"getAllCustomers"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getAllCustomersByFirstName/{firstName}",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"firstName\" : \"Ivan\",\r\n    \"lastName\" : \"Horvat\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9090/getAllCustomersByFirstName/A",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9090",
+					"path": [
+						"getAllCustomersByFirstName",
+						"A"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getAllCustomersByLastName/{lastName}",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"firstName\" : \"Ivan\",\r\n    \"lastName\" : \"Horvat\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9090/getAllCustomersByLastName/T",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9090",
+					"path": [
+						"getAllCustomersByLastName",
+						"T"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getCustomerById",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"firstName\" : \"Ivan\",\r\n    \"lastName\" : \"Horvat\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9090/getCustomerById/53",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9090",
+					"path": [
+						"getCustomerById",
+						"53"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getComputersByCustomerId/{id}",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"firstName\" : \"Ivan\",\r\n    \"lastName\" : \"Horvat\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9090/getComputersByCustomerId/777",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9090",
+					"path": [
+						"getComputersByCustomerId",
+						"777"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "addCustomer - first data",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"firstName\": \"Bozidar\",\r\n    \"lastName\": \"Musica\",\r\n    \"email\": \"bozidar.musica@hotmail.com\",\r\n    \"address\": \"Donje Vino 666\",\r\n    \"computers\": [\r\n        {\r\n            \"processor\": \"Jaki procesor 3\",\r\n            \"cores\": \"1024\",\r\n            \"graphicsCard\": \"Jaka graficka kartica\"\r\n        }\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9090/addCustomer",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9090",
+					"path": [
+						"addCustomer"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "addCustomer - second data",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"firstName\": \"Stanko\",\r\n    \"lastName\": \"Kupus\",\r\n    \"email\": \"stanko.kupus@gmail.com\",\r\n    \"address\": \"Ulica zelja 12\",\r\n    \"computers\": [\r\n        {\r\n            \"processor\": \"Intel Core i7\",\r\n            \"cores\": \"4\",\r\n            \"graphicsCard\": \"AMD\"\r\n        },\r\n        {\r\n            \"processor\": \"Intel Core i5\",\r\n            \"cores\": \"2\",\r\n            \"graphicsCard\": \"Nvidia\"\r\n        }\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9090/addCustomer",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9090",
+					"path": [
+						"addCustomer"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "addCustomer - third data",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"firstName\": \"Pile\",\r\n    \"lastName\": \"Jajalo\",\r\n    \"email\": \"pile.jajalo@gmail.com\",\r\n    \"address\": \"Ulica nekih kokosi 12\",\r\n    \"computers\": [\r\n        {\r\n            \"processor\": \"Intel Core i9\",\r\n            \"cores\": \"8\",\r\n            \"graphicsCard\": \"Nvidia\"\r\n        },\r\n\r\n        {\r\n            \"processor\": \"Intel Core i221\",\r\n            \"cores\": \"256\",\r\n            \"graphicsCard\": \"AMD\"\r\n        },\r\n        \r\n        {\r\n            \"processor\": \"AMD Ryzen Threadripper PRO 5995WX\",\r\n            \"cores\": \"16\",\r\n            \"graphicsCard\": \"AMD some card\"\r\n        }\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9090/addCustomer",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9090",
+					"path": [
+						"addCustomer"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "updateCustomerById",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"firstName\": \"Bozidar\",\r\n    \"lastName\": \"Muha\",\r\n    \"email\": \"bozidar.muha@hotmail.com\",\r\n    \"address\": \"Donje Vino 666\",\r\n    \"computers\": [\r\n        {\r\n            \"processor\": \"Najjaci procesor 4\",\r\n            \"cores\": \"2048\",\r\n            \"graphicsCard\": \"Najjaca graficka kartica\"\r\n        },\r\n\r\n        {\r\n            \"processor\": \"Jaci od najjaceg procesor 999\",\r\n            \"cores\": 4096,\r\n            \"graphicsCard\": \"Jaca od najjace graficka kartica\"\r\n        }\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9090/updateCustomerById/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9090",
+					"path": [
+						"updateCustomerById",
+						"1"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
