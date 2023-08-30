@@ -6,13 +6,11 @@ import lombok.*;
 import java.util.List;
 import java.util.Objects;
 
-@Data
 @Entity
 @Table(name="customers")
+@Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Setter
-@Getter
 @ToString
 public class Customer {
 
@@ -32,22 +30,9 @@ public class Customer {
     @Column(nullable = false)
     private String address;
 
+    // One-to-many relationship between Customer and Computer entities.
+    // Cascade operations are set to ALL (including orphan removal)
     @OneToMany(targetEntity = Computer.class, cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name = "customer_id", referencedColumnName = "id")
     private List<Computer> computers;
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Customer customer = (Customer) o;
-        return Objects.equals(id, customer.id) && Objects.equals(firstName, customer.firstName) &&
-                Objects.equals(lastName, customer.lastName) && Objects.equals(email, customer.email) &&
-                Objects.equals(address, customer.address) && Objects.equals(computers, customer.computers);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, firstName, lastName, email, address, computers);
-    }
 }

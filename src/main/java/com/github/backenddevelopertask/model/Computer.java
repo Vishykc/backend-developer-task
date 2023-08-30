@@ -5,38 +5,28 @@ import lombok.*;
 
 import java.util.Objects;
 
-@Data
 @Entity
 @Table(name="computers")
+@Data
 @ToString
 @NoArgsConstructor
 @AllArgsConstructor
 public class Computer {
 
+    // Primary key for the Computer entity, it is automatically generated
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
+    // Processor details for the computer
     @Column(nullable = false)
     private String processor;
 
+    // Number of CPU cores in the computer
     @Column(nullable = false)
     private Integer cores;
 
+    // Graphics card details for the computer
     @Column(nullable = false)
     private String graphicsCard;
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Computer computer = (Computer) o;
-        return Objects.equals(id, computer.id) && Objects.equals(processor, computer.processor) &&
-                Objects.equals(cores, computer.cores) && Objects.equals(graphicsCard, computer.graphicsCard);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, processor, cores, graphicsCard);
-    }
 }
