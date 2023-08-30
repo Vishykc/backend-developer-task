@@ -124,21 +124,27 @@ public class CustomerController {
 
     @PostMapping("/updateCustomerById/{id}")
     public ResponseEntity<Customer> updateCustomer(@PathVariable Long id, @RequestBody Customer newCustomerData) {
-        Optional<Customer> oldCustomerData = customerRepo.findById(id);
+        Optional<Customer> oldCustomerDataOptional = customerRepo.findById(id);
 
-        if(oldCustomerData.isPresent()) {
-            Customer updatedCustomerData = oldCustomerData.get();
-            updatedCustomerData.setFirstName(newCustomerData.getFirstName());
-            updatedCustomerData.setLastName(newCustomerData.getLastName());
-            updatedCustomerData.setEmail(newCustomerData.getEmail());
-            updatedCustomerData.setAddress(newCustomerData.getAddress());
-            updatedCustomerData.setComputers(newCustomerData.getComputers());
+        if (oldCustomerDataOptional.isPresent()) {
+            Customer oldCustomerData = oldCustomerDataOptional.get();
+            List<Computer> newComputers = newCustomerData.getComputers();
 
-            Customer customerObj = customerRepo.save(updatedCustomerData);
-            return new ResponseEntity<>(customerObj, HttpStatus.OK);
+            // Update customer attributes
+            oldCustomerData.setFirstName(newCustomerData.getFirstName());
+            oldCustomerData.setLastName(newCustomerData.getLastName());
+            oldCustomerData.setEmail(newCustomerData.getEmail());
+            oldCustomerData.setAddress(newCustomerData.getAddress());
+
+            // Clear the old computers and assign the new ones
+            oldCustomerData.getComputers().clear();
+            oldCustomerData.getComputers().addAll(newComputers);
+
+            Customer updatedCustomer = customerRepo.save(oldCustomerData);
+
+            return new ResponseEntity<>(updatedCustomer, HttpStatus.OK);
         }
 
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-
     }
 }
